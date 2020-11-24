@@ -11,6 +11,7 @@ jobs:
     - name: Send Dispatch
       run: |
         curl --request POST \
+        --user "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" \
         --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
         --header "Accept: application/vnd.github.everest-preview+json" \
         --header "Content-Type: application/json" \
