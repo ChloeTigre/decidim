@@ -6,6 +6,7 @@ on:
 jobs:
   trigger_docker_build:
     name: Trigger Docker Build
+    runs-on: ubuntu-latest
     steps:
     - name: Send Dispatch
       run: |
