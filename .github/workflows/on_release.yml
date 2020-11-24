@@ -10,8 +10,9 @@ jobs:
     steps:
     - name: Send Dispatch
       run: |
-        curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" \
-        -H "Accept: application/vnd.github.everest-preview+json" \
-        -H "Content-Type: application/json" \
+        curl --request POST \
+        --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+        --header "Accept: application/vnd.github.everest-preview+json" \
+        --header "Content-Type: application/json" \
         https://api.github.com/repos/oliverbarnes/decidim-docker/actions/workflows/on_push.yml/dispatches \
         --data '{"ref": "master"}'
