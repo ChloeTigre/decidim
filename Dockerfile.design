@@ -1,4 +1,4 @@
-FROM decidim/decidim:latest
+FROM decidim/decidim-generator:latest
 LABEL maintainer="info@codegram.com"
 
 ENV LANG C.UTF-8
