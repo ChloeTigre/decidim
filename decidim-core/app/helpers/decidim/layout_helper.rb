@@ -35,14 +35,13 @@ module Decidim
       html_properties["height"] = options[:height]
       html_properties["aria-label"] = options[:aria_label] || options[:"aria-label"] || options["aria-label"]
       html_properties["role"] = options[:role] || "img"
-      html_properties["aria-hidden"] = options[:aria_hidden] || options[:"aria-hidden"] || options["aria-hidden"]
+      html_properties["aria-hidden"] = options[:aria_hidden] || options[:"aria-hidden"] || options["aria-hidden"] || html_properties["aria-label"].blank?
 
+      # Fix for accessibility
       html_properties["class"] = (["icon--#{name}"] + _icon_classes(options)).join(" ")
 
       content_tag :svg, html_properties do
-        inner = content_tag :title, options["title"] || html_properties["aria-label"]
-        inner += content_tag :use, nil, role: options[:role], "href" => "#{asset_path("decidim/icons.svg")}#icon-#{name}"
-
+        inner = content_tag :use, nil, role: options[:role], "href" => "#{asset_path("decidim/icons.svg")}#icon-#{name}"
         inner
       end
     end
